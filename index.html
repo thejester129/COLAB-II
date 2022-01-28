@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>COLAB II</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="stylesheet.css">
+  <!-- Popup CSS -->
+  <link href="css/popup_view.css" rel="stylesheet">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <!-- Material Icons CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  <script src="main.js"></script> 
+  <script src="popup.js"></script>
+</head>
+
+<body>
+
+<h1>"COLAB II"</h1>
+<h2>[ AN EXPLORATION OF SPACE AND HABITAT THROUGH WINDOWS ]</h2>
+<h2> BY TOM GIBSON AND ESME LAWTON </h2>
+<div id="header_line">
+
+</div>
+
+<div id="map"></div>
+
+
+<div id="gallery_popup">
+
+  <div id="close_button">
+      <button style="cursor: pointer; border:none; background-color: #d9d9d9;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="closeGalleryView()">
+        <div class="mdc-icon-button__ripple"></div>
+        close
+        <div class="mdc-icon-button__touch"></div>
+      </button>
+  </div>
+  
+  
+  <img id="gallery_image"/>
+
+  <div id="gallery_footer">
+    <div id="arrow_container">
+
+      <button style="cursor: pointer; border:none; background-color: #303030; color: white;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="moveImageLeft()">
+        <div class="mdc-icon-button__ripple"></div>
+        arrow_back
+        <div class="mdc-icon-button__touch"></div>
+      </button>
+
+      <div id="gallery_image_title"></div>
+      <div id="gallery_image_progress"></div>
+
+      <button style="cursor: pointer; border:none; float:right; background-color: #303030; color: white;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="moveImageRight()">
+        <div class="mdc-icon-button__ripple"></div>
+        arrow_forward
+        <div class="mdc-icon-button__touch"></div>
+      </button>
+      
+    </div>
+   
+  </div>
+
+</div>
+
+<script>
+  window.onload = () => startup();
+</script>
+
+
+
+</body>
+</html> 
