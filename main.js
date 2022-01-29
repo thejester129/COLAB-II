@@ -5,7 +5,7 @@ const images = [
   {
     location: [55.8908151, -4.2313973],
     title: "Springburn",
-    sources: ["img/andrew1.jpg", "img/andrew2.jpg", "img/andrew3.jpg"],
+    sources: ["img/andrew1.JPG", "img/andrew2.JPG", "img/andrew3.JPG"],
   },
 ];
 
