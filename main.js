@@ -132,8 +132,22 @@ function closeGalleryView() {
   document.getElementById("map").style.visibility = "visible";
 }
 
+function preloadImage(url) {
+  var img = new Image();
+  img.src = url;
+}
+
+function preloadImages() {
+  images.forEach((image) => {
+    image.sources.forEach((src) => {
+      preloadImage(src);
+    });
+  });
+}
+
 function startup() {
   createMap();
   configurePopups();
   addMarkers();
+  preloadImages();
 }
