@@ -1,11 +1,57 @@
 let map, galleryView;
 
 const images = [
-  // Andrew
   {
     location: [55.8908151, -4.2313973],
     title: "Springburn",
-    sources: ["img/andrew1.JPG", "img/andrew2.JPG", "img/andrew3.JPG"],
+    sources: [
+      "img/springburn_1.JPG",
+      "img/springburn_2.JPG",
+      "img/springburn_3.JPG",
+    ],
+  },
+  {
+    location: [55.86784, -4.265451],
+    title: "89 Buccleuch Street",
+    sources: [
+      "img/89_Buccleuch_Street_1.JPG",
+      "img/89_Buccleuch_Street_2.JPG",
+      "img/89_Buccleuch_Street_3.JPG",
+    ],
+  },
+  {
+    location: [55.865595, -4.265132],
+    title: "CCA Sauchiehall Street",
+    sources: ["img/CCA_Sauchiehall_Street.JPG"],
+  },
+  {
+    location: [55.863692, -4.282373],
+    title: "Finnieston",
+    sources: ["img/Finnieston.JPG"],
+  },
+  {
+    location: [55.865936, -4.264532],
+    title: "Campus",
+    sources: ["img/Campus.JPG"],
+  },
+  {
+    location: [55.868779, -4.290083],
+    title: "Kelvingrove Art Gallery",
+    sources: [
+      "img/Kelvingrove_Art_Gallery_1.JPG",
+      "img/Kelvingrove_Art_Gallery_2.JPG",
+      "img/Kelvingrove_Art_Gallery_3.JPG",
+    ],
+  },
+  {
+    location: [55.896216, -4.343972],
+    title: "Great Western Road",
+    sources: ["img/Great_Western_Road.JPG"],
+  },
+  {
+    location: [55.865932, -4.288073],
+    title: "Argyle Street",
+    sources: ["img/Argyle_Street_1.JPG", "img/Argyle_Street_2.JPG"],
   },
 ];
 
