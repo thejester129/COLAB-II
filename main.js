@@ -117,6 +117,14 @@ function openGalleryView(image) {
   document.getElementById("gallery_image_title").innerText = image.title;
   galleryView.style.visibility = "visible";
   document.getElementById("map").style.visibility = "hidden";
+
+  if (gallerySrcs.length === 1) {
+    document.getElementById("arrow_left").style.visibility = "hidden";
+    document.getElementById("arrow_right").style.visibility = "hidden";
+  } else {
+    document.getElementById("arrow_left").style.visibility = "visible";
+    document.getElementById("arrow_right").style.visibility = "visible";
+  }
 }
 
 function closeGalleryView() {
