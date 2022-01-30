@@ -130,6 +130,7 @@ function openGalleryView(image) {
 function closeGalleryView() {
   galleryView.style.visibility = "hidden";
   document.getElementById("map").style.visibility = "visible";
+  setGalleryImage(null);
 }
 
 function preloadImage(url) {
