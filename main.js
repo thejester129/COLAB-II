@@ -133,12 +133,16 @@ function closeGalleryView() {
   setGalleryImage(null);
 }
 
+var cachedImages = [];
+
 function preloadImage(url) {
   var img = new Image();
   img.src = url;
+  cachedImages.push(img);
 }
 
 function preloadImages() {
+  cachedImages = new Array(images.length);
   images.forEach((image) => {
     image.sources.forEach((src) => {
       preloadImage(src);
