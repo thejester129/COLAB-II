@@ -38,7 +38,7 @@ const images = [
     location: [55.868779, -4.290083],
     title: "Kelvingrove Art Gallery",
     sources: [
-      "img/Kelvingrove_Art_Gallery_1.JPG",
+      "img/Kelvingrove_art_Gallery_1.JPG",
       "img/Kelvingrove_Art_Gallery_2.JPG",
       "img/Kelvingrove_Art_Gallery_3.JPG",
     ],
