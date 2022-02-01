@@ -109,6 +109,8 @@ function setCurrentProgress(x) {
     x + "/" + gallerySrcs.length;
 }
 
+var galleryViewOpen = false;
+
 function openGalleryView(image) {
   gallerySrcs = image.sources;
   setCurrentProgress(1);
@@ -125,12 +127,14 @@ function openGalleryView(image) {
     document.getElementById("arrow_left").style.visibility = "visible";
     document.getElementById("arrow_right").style.visibility = "visible";
   }
+  galleryViewOpen = true;
 }
 
 function closeGalleryView() {
   galleryView.style.visibility = "hidden";
   document.getElementById("map").style.visibility = "visible";
   setGalleryImage(null);
+  galleryViewOpen = false;
 }
 
 var cachedImages = [];
@@ -150,9 +154,22 @@ function preloadImages() {
   });
 }
 
+function addKeyListeners() {
+  document.addEventListener("keyup", (e) => {
+    if (galleryViewOpen) {
+      if (e.code === "ArrowLeft") {
+        moveImageLeft();
+      } else if (e.code === "ArrowRight") {
+        moveImageRight();
+      }
+    }
+  });
+}
+
 function startup() {
   createMap();
   configurePopups();
   addMarkers();
+  addKeyListeners();
   preloadImages();
 }
