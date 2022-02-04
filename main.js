@@ -188,6 +188,8 @@ function addKeyListeners() {
         moveImageLeft();
       } else if (e.code === "ArrowRight") {
         moveImageRight();
+      } else if (e.code === "Escape") {
+        closeGalleryView();
       }
     }
   });
