@@ -75,6 +75,11 @@ const images = [
       "img/buc_7.png",
     ],
   },
+  {
+    location: [46.853868, 29.5798405],
+    title: "Tiraspol",
+    sources: ["img/t_1.jpg", "img/t_2.jpg", "img/t_3.jpg"],
+  },
 ];
 
 function createMap() {
