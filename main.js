@@ -53,6 +53,28 @@ const images = [
     title: "Argyle Street",
     sources: ["img/Argyle_Street_1.JPG", "img/Argyle_Street_2.JPG"],
   },
+  {
+    location: [55.8642265, -4.266613],
+    title: "200 West Regent Street",
+    sources: [
+      "img/200_west_regent_1.jpg",
+      "img/200_west_regent_2.jpg",
+      "img/200_west_regent_3.jpg",
+    ],
+  },
+  {
+    location: [55.8679178, -4.2675979],
+    title: "Buccleuch Street",
+    sources: [
+      "img/buc_1.png",
+      "img/buc_2.png",
+      "img/buc_3.png",
+      "img/buc_4.png",
+      "img/buc_5.png",
+      "img/buc_6.png",
+      "img/buc_7.png",
+    ],
+  },
 ];
 
 function createMap() {
