@@ -168,3 +168,38 @@ h2 {
   filter: alpha(opacity=30);
   opacity: 0.75;
 }
+
+@media screen and (max-device-width: 480px) {
+  #map {
+    max-height: 60vh;
+    top: 25vh;
+  }
+
+  #gallery_image {
+    position: fixed;
+    max-height: 80vh;
+    width: 90vw;
+    left: 5vw;
+    top: 20vh;
+    margin-left: 0;
+  }
+
+  #gallery_left_arrow {
+    top: 90vh;
+    left: 10vw;
+    width: 30px;
+    height: 30px;
+  }
+
+  #gallery_right_arrow {
+    right: 10vw;
+    top: 90vh;
+    width: 30px;
+    height: 30px;
+  }
+
+  #gallery_back_button {
+    width: 30px;
+    height: 30px;
+  }
+}
