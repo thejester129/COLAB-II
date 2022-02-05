@@ -1,5 +1,191 @@
 let map, galleryView;
 
+// Map
+
+function createMap() {
+  map = L.map("map", {
+    keyboard: false,
+  }).setView([55.8725, -4.2778], 13);
+
+  L.tileLayer(
+    "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+    {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }
+  ).addTo(map);
+}
+
+// Popups
+
+function configurePopups() {
+  galleryView = document.getElementById("gallery_popup");
+}
+
+var markerIcon = L.icon({
+  iconUrl: "img/window2.png",
+
+  iconSize: [25, 25], // size of the icon
+  shadowSize: [35], // size of the shadow
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-10, -88], // point from which the popup should open relative to the iconAnchor
+});
+
+function addMarkers() {
+  images.forEach((image) => {
+    L.marker(image.location, { icon: markerIcon })
+      .bindPopup(
+        L.popup({
+          className: "markerPopup",
+          maxWidth: 300,
+        }).setContent(createPopupImageElement(image))
+      )
+      .addTo(map);
+  });
+}
+
+function createPopupImageElement(image) {
+  var imageHtmlString = `<img
+  id="popupImage"
+  style="max-width: 200px; max-height: 200px; margin:5px; cursor: pointer; border-radius: 12px;"
+  />`;
+
+  var popupImage = createElementFromHTML(imageHtmlString);
+  popupImage.src = image.sources[0];
+  popupImage.onclick = function () {
+    openGalleryView(image);
+  };
+
+  return popupImage;
+}
+
+// Gallery View
+
+let currentImageNo;
+let gallerySrcs;
+
+function openGalleryView(image) {
+  gallerySrcs = image.sources;
+  document.getElementById("opaque_background").style.visibility = "visible";
+  currentImageNo = 1;
+  setGalleryImage(image.sources[0]);
+  galleryView.style.visibility = "visible";
+  document.getElementById("gallery_left_arrow").style.opacity = 0.2;
+  document.getElementById("gallery_right_arrow").style.opacity = 1;
+  if (gallerySrcs.length === 1) {
+    document.getElementById("gallery_left_arrow").style.visibility = "hidden";
+    document.getElementById("gallery_right_arrow").style.visibility = "hidden";
+  } else {
+    document.getElementById("gallery_left_arrow").style.visibility = "visible";
+    document.getElementById("gallery_right_arrow").style.visibility = "visible";
+  }
+
+  document.getElementById("gallery_back_button").style.visibility = "visible";
+  galleryViewOpen = true;
+}
+
+function closeGalleryView() {
+  galleryView.style.visibility = "hidden";
+  document.getElementById("opaque_background").style.visibility = "hidden";
+  document.getElementById("gallery_back_button").style.visibility = "hidden";
+  document.getElementById("gallery_left_arrow").style.visibility = "hidden";
+  document.getElementById("gallery_right_arrow").style.visibility = "hidden";
+  setGalleryImage(null);
+  galleryViewOpen = false;
+}
+
+function moveImageLeft() {
+  if (currentImageNo === 1) {
+    return;
+  }
+  currentImageNo--;
+  setGalleryImage(gallerySrcs[currentImageNo - 1]);
+
+  document.getElementById("gallery_right_arrow").style.opacity = 1;
+  if (currentImageNo === 1) {
+    document.getElementById("gallery_left_arrow").style.opacity = 0.2;
+  } else {
+    document.getElementById("gallery_left_arrow").style.opacity = 1;
+  }
+}
+
+function moveImageRight() {
+  if (currentImageNo == gallerySrcs.length) {
+    return;
+  }
+  currentImageNo++;
+  setGalleryImage(gallerySrcs[currentImageNo - 1]);
+
+  document.getElementById("gallery_left_arrow").style.opacity = 1;
+  if (currentImageNo == gallerySrcs.length) {
+    document.getElementById("gallery_right_arrow").style.opacity = 0.2;
+  } else {
+    document.getElementById("gallery_right_arrow").style.opacity = 1;
+  }
+}
+
+function setGalleryImage(src) {
+  document.getElementById("gallery_image").src = src;
+}
+
+var galleryViewOpen = false;
+
+function startup() {
+  createMap();
+  configurePopups();
+  addMarkers();
+  addKeyListeners();
+  preloadImages();
+}
+
+// Helpers
+
+function createElementFromHTML(htmlString) {
+  var div = document.createElement("div");
+  div.innerHTML = htmlString.trim();
+
+  // Change this to div.childNodes to support multiple top-level nodes.
+  return div.firstChild;
+}
+
+// Key Listeners
+
+function addKeyListeners() {
+  document.addEventListener("keyup", (e) => {
+    if (galleryViewOpen) {
+      if (e.code === "ArrowLeft") {
+        moveImageLeft();
+      } else if (e.code === "ArrowRight") {
+        moveImageRight();
+      } else if (e.code === "Escape") {
+        closeGalleryView();
+      }
+    }
+  });
+}
+
+// Image Caching
+
+var cachedImages = [];
+
+function preloadImage(url) {
+  var img = new Image();
+  img.src = url;
+  cachedImages.push(img);
+}
+
+function preloadImages() {
+  cachedImages = new Array(images.length);
+  images.forEach((image) => {
+    image.sources.forEach((src) => {
+      preloadImage(src);
+    });
+  });
+}
+
+// Images
+
 const images = [
   {
     location: [55.8908151, -4.2313973],
@@ -80,125 +266,9 @@ const images = [
     title: "Tiraspol",
     sources: ["img/t_1.jpg", "img/t_2.jpg", "img/t_3.jpg"],
   },
+  {
+    location: [55.8785423, -4.2818237, 17],
+    title: "Kelvinbridge",
+    sources: ["img/kelvinbridge.jpg"],
+  },
 ];
-
-function createMap() {
-  map = L.map("map").setView([55.8725, -4.2778], 13);
-
-  L.tileLayer(
-    "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
-    {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }
-  ).addTo(map);
-}
-
-function configurePopups() {
-  galleryView = document.getElementById("gallery_popup");
-}
-
-function addMarkers() {
-  images.forEach((image) => {
-    L.marker(image.location)
-      .addTo(map)
-      .on("click", () => openGalleryView(image));
-  });
-}
-
-let currentImageNo;
-let gallerySrcs;
-
-function moveImageRight() {
-  if (currentImageNo == gallerySrcs.length) {
-    return;
-  }
-  currentImageNo++;
-  setGalleryImage(gallerySrcs[currentImageNo - 1]);
-  setCurrentProgress(currentImageNo);
-}
-
-function moveImageLeft() {
-  if (currentImageNo == 1) {
-    return;
-  }
-  currentImageNo--;
-  setGalleryImage(gallerySrcs[currentImageNo - 1]);
-  setCurrentProgress(currentImageNo);
-}
-
-function setGalleryImage(src) {
-  document.getElementById("gallery_image").src = src;
-}
-
-function setCurrentProgress(x) {
-  document.getElementById("gallery_image_progress").innerText =
-    x + "/" + gallerySrcs.length;
-}
-
-var galleryViewOpen = false;
-
-function openGalleryView(image) {
-  gallerySrcs = image.sources;
-  setCurrentProgress(1);
-  currentImageNo = 1;
-  setGalleryImage(image.sources[0]);
-  document.getElementById("gallery_image_title").innerText = image.title;
-  galleryView.style.visibility = "visible";
-  document.getElementById("map").style.visibility = "hidden";
-
-  if (gallerySrcs.length === 1) {
-    document.getElementById("arrow_left").style.visibility = "hidden";
-    document.getElementById("arrow_right").style.visibility = "hidden";
-  } else {
-    document.getElementById("arrow_left").style.visibility = "visible";
-    document.getElementById("arrow_right").style.visibility = "visible";
-  }
-  galleryViewOpen = true;
-}
-
-function closeGalleryView() {
-  galleryView.style.visibility = "hidden";
-  document.getElementById("map").style.visibility = "visible";
-  setGalleryImage(null);
-  galleryViewOpen = false;
-}
-
-var cachedImages = [];
-
-function preloadImage(url) {
-  var img = new Image();
-  img.src = url;
-  cachedImages.push(img);
-}
-
-function preloadImages() {
-  cachedImages = new Array(images.length);
-  images.forEach((image) => {
-    image.sources.forEach((src) => {
-      preloadImage(src);
-    });
-  });
-}
-
-function addKeyListeners() {
-  document.addEventListener("keyup", (e) => {
-    if (galleryViewOpen) {
-      if (e.code === "ArrowLeft") {
-        moveImageLeft();
-      } else if (e.code === "ArrowRight") {
-        moveImageRight();
-      } else if (e.code === "Escape") {
-        closeGalleryView();
-      }
-    }
-  });
-}
-
-function startup() {
-  createMap();
-  configurePopups();
-  addMarkers();
-  addKeyListeners();
-  preloadImages();
-}

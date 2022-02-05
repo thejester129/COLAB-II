@@ -24,52 +24,43 @@
 
 <body>
 
-<h1>"COLAB II"</h1>
-<h2>[ AN EXPLORATION OF SPACE AND HABITAT THROUGH WINDOWS ]</h2>
-<h2> BY TOM GIBSON AND ESME LAWTON </h2>
-<div id="header_line">
+<div id="opaque_background"></div>
 
+<div id="header">
+  <h1 id="title">"COLAB II"</h1>
+  <h2 id="subtitle">[ AN EXPLORATION OF SPACE AND HABITAT THROUGH WINDOWS BY TOM GIBSON AND ESME LAWTON ]</h2>
 </div>
 
-<div id="map"></div>
+<img id="gallery_back_button" src="img/close.png" onclick="closeGalleryView()"/>
+
+<div id="content">
+  <div id="map"></div>
 
 
-<div id="gallery_popup">
-
-  <div id="close_button">
-      <button style="cursor: pointer; border:none; background-color: #d9d9d9;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="closeGalleryView()">
-        <div class="mdc-icon-button__ripple"></div>
-        close
-        <div class="mdc-icon-button__touch"></div>
-      </button>
-  </div>
+  <div id="gallery_popup">
   
-  
-  <img id="gallery_image"/>
-
-  <div id="gallery_footer">
-    <div id="arrow_container">
-
-      <button id="arrow_left"style="cursor: pointer; border:none; background-color: #303030; color: white;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="moveImageLeft()">
-        <div class="mdc-icon-button__ripple"></div>
-        arrow_back
-        <div class="mdc-icon-button__touch"></div>
-      </button>
-
-      <div id="gallery_image_title"></div>
-      <div id="gallery_image_progress"></div>
-
-      <button id="arrow_right" style="cursor: pointer; border:none; float:right; background-color: #303030; color: white;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="moveImageRight()">
-        <div class="mdc-icon-button__ripple"></div>
-        arrow_forward
-        <div class="mdc-icon-button__touch"></div>
-      </button>
-      
+    <div id="close_button">
+        <button style="cursor: pointer; border:none; background-color: #d9d9d9;" class="mdc-icon-button mdc-icon-button--touch material-icons" onclick="closeGalleryView()">
+          <div class="mdc-icon-button__ripple"></div>
+          close
+          <div class="mdc-icon-button__touch"></div>
+        </button>
     </div>
-   
-  </div>
+    
+    
+    <img id="gallery_image"/>
 
+    <div id="gallery_arrows">
+      <img id="gallery_left_arrow" src="img/left_arrow.png" onclick="moveImageLeft()"/>
+      <img id="gallery_right_arrow" src="img/right_arrow.png" onclick="moveImageRight()"/>
+    </div>
+
+  
+  
+  </div>
 </div>
+
+
 
 <script>
   window.onload = () => startup();
