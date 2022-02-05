@@ -57,11 +57,11 @@ h2 {
 #gallery_image {
   position: fixed;
   max-height: 80vh;
-  width: 60vw;
-  left: 50%;
-  margin-left: -30vw; /* Negative half of width. */
-  top: 10vh;
+  max-width: 60vw;
   object-fit: contain;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 10px;
   z-index: 3000;
   filter: drop-shadow(0px 20px 20px #202020);
@@ -169,6 +169,14 @@ h2 {
   opacity: 0.75;
 }
 
+#popupImage {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
 @media screen and (max-device-width: 480px) {
   #map {
     max-height: 60vh;
@@ -178,10 +186,10 @@ h2 {
   #gallery_image {
     position: fixed;
     max-height: 80vh;
-    width: 90vw;
-    left: 5vw;
-    top: 20vh;
-    margin-left: 0;
+    max-width: 90vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   #gallery_left_arrow {
@@ -201,5 +209,10 @@ h2 {
   #gallery_back_button {
     width: 30px;
     height: 30px;
+  }
+
+  #popupImage {
+    max-width: 100px;
+    max-height: 100px;
   }
 }
