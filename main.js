@@ -224,9 +224,9 @@ const images = [
     location: [55.868779, -4.290083],
     title: "Kelvingrove Art Gallery",
     sources: [
-      "img/Kelvingrove_art_Gallery_1.JPG",
       "img/Kelvingrove_Art_Gallery_2.JPG",
       "img/Kelvingrove_Art_Gallery_3.JPG",
+      "img/Kelvingrove_art_Gallery_1.JPG",
     ],
   },
   {
@@ -270,5 +270,140 @@ const images = [
     location: [55.8785423, -4.2818237, 17],
     title: "Kelvinbridge",
     sources: ["img/kelvinbridge.jpg"],
+  },
+  {
+    location: [55.851608, -4.307512],
+    title: "",
+    sources: ["img/55.851608, -4.307512.JPG"],
+  },
+  {
+    location: [55.852323, -4.299499],
+    title: "",
+    sources: ["img/55.852323, -4.299499.JPG"],
+  },
+  {
+    location: [55.855165, -4.236315],
+    title: "",
+    sources: ["img/55.855165, -4.236315.JPG"],
+  },
+  {
+    location: [55.857368, -4.2482],
+    title: "",
+    sources: ["img/55.857368, -4.248200.JPG"],
+  },
+  {
+    location: [55.858361, -4.261793],
+    title: "",
+    sources: ["img/55.858361, -4.261793.JPG"],
+  },
+  {
+    location: [55.863721, -4.261718],
+    title: "",
+    sources: ["img/55.863721, -4.261718.JPG"],
+  },
+  {
+    location: [55.86401, -4.288351],
+    title: "",
+    sources: ["img/55.864010, -4.288351.JPG"],
+  },
+  {
+    location: [55.864821, -4.284518],
+    title: "",
+    sources: ["img/55.864821, -4.284518.JPG"],
+  },
+  {
+    location: [55.864855, -4.258687],
+    title: "",
+    sources: ["img/55.864855, -4.258687.JPG"],
+  },
+  {
+    location: [55.864915, -4.284782],
+    title: "",
+    sources: ["img/55.864915, -4.284782.JPG"],
+  },
+  {
+    location: [55.86558, -4.26638],
+    title: "",
+    sources: ["img/55.865580, -4.266380.JPG"],
+  },
+  {
+    location: [55.865904, -4.261073],
+    title: "",
+    sources: ["img/55.865904, -4.261073.JPG"],
+  },
+  {
+    location: [55.865984, -4.261777],
+    title: "",
+    sources: ["img/55.865984, -4.261777.JPG"],
+  },
+  {
+    location: [55.866733, -4.282102],
+    title: "",
+    sources: ["img/55.866733, -4.282102.JPG"],
+  },
+  {
+    location: [55.866748, -4.282975],
+    title: "",
+    sources: ["img/55.866748, -4.282975.JPG"],
+  },
+  {
+    location: [55.866908, -4.284327],
+    title: "",
+    sources: ["img/55.866908, -4.284327.JPG"],
+  },
+  {
+    location: [55.866992, -4.284535],
+    title: "",
+    sources: ["img/55.866992, -4.284535.JPG"],
+  },
+  {
+    location: [55.86772, -4.26388],
+    title: "",
+    sources: ["img/55.867720, -4.263880.JPG"],
+  },
+  {
+    location: [55.867837, -4.267048],
+    title: "",
+    sources: ["img/55.867837, -4.267048.JPG"],
+  },
+  {
+    location: [55.867917, -4.265418],
+    title: "",
+    sources: ["img/55.867917, -4.265418.JPG"],
+  },
+  {
+    location: [55.868201, -4.26187],
+    title: "",
+    sources: ["img/55.868201, -4.261870.JPG"],
+  },
+  {
+    location: [55.868363, -4.263689],
+    title: "",
+    sources: ["img/55.868363, -4.263689.JPG"],
+  },
+  {
+    location: [55.869341, -4.257624],
+    title: "",
+    sources: ["img/55.869341, -4.257624.JPG"],
+  },
+  {
+    location: [55.873669, -4.276358],
+    title: "",
+    sources: ["img/55.873669, -4.276358.JPG"],
+  },
+  {
+    location: [55.878645, -4.278485],
+    title: "",
+    sources: ["img/55.878645, -4.278485.JPG"],
+  },
+  {
+    location: [55.8426191, -4.251966],
+    title: "",
+    sources: ["img/55.8426191, -4.2519660.JPG"],
+  },
+  {
+    location: [55.8596847, -4.260225],
+    title: "",
+    sources: ["img/55.8596847, -4.2602250.JPG"],
   },
 ];
