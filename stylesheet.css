@@ -106,6 +106,7 @@ h2 {
   background-color: #404040;
   background: #404040;
   z-index: 1000;
+  filter: drop-shadow(0px 20px 20px #202020);
 }
 
 .markerPopup .leaflet-popup-content {
