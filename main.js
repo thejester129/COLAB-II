@@ -29,7 +29,7 @@ var markerIcon = L.icon({
   shadowSize: [35], // size of the shadow
   iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
   shadowAnchor: [4, 62], // the same for the shadow
-  popupAnchor: [-10, -88], // point from which the popup should open relative to the iconAnchor
+  popupAnchor: [-10, -95], // point from which the popup should open relative to the iconAnchor
 });
 
 function addMarkers() {
