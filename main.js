@@ -5,7 +5,7 @@ let map, galleryView;
 function createMap() {
   map = L.map("map", {
     keyboard: false,
-  }).setView([55.8725, -4.2778], 13);
+  }).setView([55.87, -4.2778], 14);
 
   L.tileLayer(
     "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
@@ -34,18 +34,20 @@ var markerIcon = L.icon({
 
 function addMarkers() {
   images.forEach((image) => {
-    L.marker(image.location, { icon: markerIcon })
-      .bindPopup(
-        L.popup({
-          className: "markerPopup",
-          maxWidth: 300,
-        }).setContent(createPopupImageElement(image))
-      )
+    var popup = L.popup({
+      className: "markerPopup",
+      maxWidth: 300,
+    });
+
+    var marker = L.marker(image.location, { icon: markerIcon })
+      .bindPopup(popup)
       .addTo(map);
+
+    popup.setContent(createPopupImageElement(image, marker));
   });
 }
 
-function createPopupImageElement(image) {
+function createPopupImageElement(image, marker) {
   var imageHtmlString = `<img
   id="popupImage"
   style="max-width: 200px; max-height: 200px; margin:5px; cursor: pointer; border-radius: 12px;"
@@ -55,6 +57,7 @@ function createPopupImageElement(image) {
   popupImage.src = image.sources[0];
   popupImage.onclick = function () {
     openGalleryView(image);
+    //marker.closePopup();
   };
 
   return popupImage;
