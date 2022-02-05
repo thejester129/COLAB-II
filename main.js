@@ -49,7 +49,7 @@ function addMarkers() {
 
 function openPopup(popup, location, e) {
   console.log("trying");
-  x = location[0]; //+ 0.0005; // Put above marker
+  x = location[0] + 0.00005; // Put above marker
   map.openPopup(popup, [x, location[1]]);
 }
 
