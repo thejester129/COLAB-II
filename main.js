@@ -67,6 +67,7 @@ function createDesktopMarkers(image, popup) {
   var marker = L.marker(image.location, {
     icon: getPhotoIcon(image.sources[0]),
   })
+    .on("click", (e) => openGalleryView(image))
     .on("mouseover", (e) => openPopup(popup, image.location, e))
     .on("mouseout", (e) => closePopup())
     .addTo(map);
