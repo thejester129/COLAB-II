@@ -174,9 +174,18 @@ let hideLoadingTimer;
 let loadingPos = 0;
 let loadingAlpha = 1;
 
+// Animation
+
 function hideLoadingScreen() {
   hideLoadingTimer = setInterval(() => animateHideLoading(), 5);
   stopLoadingHideAnimation();
+  hideLoadingIcon();
+}
+
+function hideLoadingIcon() {
+  clearInterval(loadingIconTimer);
+  var loadingIcon = document.getElementById("loadingIcon");
+  loadingIcon.style.display = "none";
 }
 
 function animateHideLoading() {
@@ -198,10 +207,7 @@ function stopLoadingHideAnimation() {
 function animateLoadingIcon() {
   var loadingIcon = document.getElementById("loadingIcon");
   loadingIconTimer = setInterval(() => rotateIcon(loadingIcon), 300);
-  setTimeout(() => {
-    clearInterval(loadingIconTimer);
-    loadingIcon.style.display = "none";
-  }, 5000);
+  setTimeout(() => {}, 5000);
 }
 
 var degrees = 0;
@@ -218,7 +224,6 @@ function startup() {
   addMarkers();
   addKeyListeners();
   preloadImages();
-  setTimeout(() => hideLoadingScreen(), 3000); // TODO wait for images being loaded instead of hardcoded timer?
 }
 
 // Helpers
@@ -265,9 +270,16 @@ function addKeyListeners() {
 // Image Caching
 
 var cachedImages = [];
+var loadedImages = 0;
 
 function preloadImage(url) {
   var img = new Image();
+  img.onload = () => {
+    loadedImages++;
+    if (loadedImages == images.length) {
+      hideLoadingScreen(); // Images have loaded!
+    }
+  };
   img.src = url;
   cachedImages.push(img);
 }
