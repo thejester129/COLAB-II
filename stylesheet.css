@@ -130,6 +130,7 @@ h2 {
 
 #gallery_back_button {
   position: absolute;
+  padding: 10px;
   top: 5vh;
   right: 5vh;
   width: 25px;
