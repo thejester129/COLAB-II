@@ -2,8 +2,7 @@
 
 Interactive map of photos taken around Glasgow.
 
-![image](https://user-images.githubusercontent.com/51316224/152679450-9323d306-6c63-48d9-9273-3a8c82ed304c.png)
-
+![image](https://user-images.githubusercontent.com/51316224/152679483-26bb5448-4fea-40d0-9f38-58aaca4db394.png)
 
 Using:
 LeafletJS (OpenStreetMap)
