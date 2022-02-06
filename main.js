@@ -84,14 +84,11 @@ function closePopup(p) {
 }
 
 function createPopupImageElement(image, marker) {
-  var imageHtmlString = `<img 
-  id="popupImage"
-  />`;
+  var imageHtmlString = `<img id="popupImage"/>`;
 
   var popupImage = createElementFromHTML(imageHtmlString);
   popupImage.src = image.sources[0];
   popupImage.onclick = function (event) {
-    console.log("clicked");
     openGalleryView(image);
   };
 
@@ -109,6 +106,13 @@ function openGalleryView(image) {
   currentImageNo = 1;
   setGalleryImage(image.sources[0]);
   galleryView.style.visibility = "visible";
+  configArrowVisibility();
+
+  document.getElementById("gallery_back_button").style.visibility = "visible";
+  galleryViewOpen = true;
+}
+
+function configArrowVisibility() {
   document.getElementById("gallery_left_arrow").style.opacity = 0.2;
   document.getElementById("gallery_right_arrow").style.opacity = 1;
   if (gallerySrcs.length === 1) {
@@ -118,9 +122,6 @@ function openGalleryView(image) {
     document.getElementById("gallery_left_arrow").style.visibility = "visible";
     document.getElementById("gallery_right_arrow").style.visibility = "visible";
   }
-
-  document.getElementById("gallery_back_button").style.visibility = "visible";
-  galleryViewOpen = true;
 }
 
 function closeGalleryView() {
@@ -169,12 +170,55 @@ function setGalleryImage(src) {
 
 var galleryViewOpen = false;
 
+let hideLoadingTimer;
+let loadingPos = 0;
+let loadingAlpha = 1;
+
+function hideLoadingScreen() {
+  hideLoadingTimer = setInterval(() => animateHideLoading(), 5);
+  stopLoadingHideAnimation();
+}
+
+function animateHideLoading() {
+  var loadingScreen = document.getElementById("loadingScreen");
+  loadingPos = loadingPos - 20;
+  loadingAlpha = loadingAlpha - 0.005;
+  loadingScreen.style.top = loadingPos + "px";
+  loadingScreen.style.opacity = loadingAlpha;
+}
+
+function stopLoadingHideAnimation() {
+  var loadingScreen = document.getElementById("loadingScreen");
+  setTimeout(() => {
+    clearInterval(hideLoadingTimer);
+    loadingScreen.style.display = "none";
+  }, 2000);
+}
+
+function animateLoadingIcon() {
+  var loadingIcon = document.getElementById("loadingIcon");
+  loadingIconTimer = setInterval(() => rotateIcon(loadingIcon), 300);
+  setTimeout(() => {
+    clearInterval(loadingIconTimer);
+    loadingIcon.style.display = "none";
+  }, 5000);
+}
+
+var degrees = 0;
+
+function rotateIcon(icon) {
+  degrees = degrees + 90;
+  icon.style.transform = "rotate(" + degrees + "deg)";
+}
+
 function startup() {
+  animateLoadingIcon();
   createMap();
   configurePopups();
   addMarkers();
   addKeyListeners();
   preloadImages();
+  setTimeout(() => hideLoadingScreen(), 3000); // TODO wait for images being loaded instead of hardcoded timer?
 }
 
 // Helpers
