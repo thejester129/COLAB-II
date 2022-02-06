@@ -25,12 +25,14 @@ body {
 h1 {
   color: #e6e6e6;
   text-align: center;
+  font-weight: 500;
 }
 
 h2 {
   color: #e6e6e6;
   text-align: center;
   font-size: medium;
+  font-weight: 500;
 }
 
 #map {
