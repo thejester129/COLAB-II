@@ -8,7 +8,7 @@ Using:
 
 LeafletJS (OpenStreetMap)
 
-Pure JS/Html/Css
+Pure JS/HTML/CSS
 
 Available at : 
 https://thejester129.github.io/COLAB_II/
