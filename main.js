@@ -414,4 +414,9 @@ const images = [
     title: "",
     sources: ["img/55.8596847, -4.2602250.JPG"],
   },
+  {
+    location: [55.8634756, -4.2568691],
+    title: "",
+    sources: ["img/maki_1.jpg", "img/maki_2.jpg"],
+  },
 ];
