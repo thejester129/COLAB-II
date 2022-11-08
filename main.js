@@ -208,7 +208,9 @@ function stopLoadingHideAnimation() {
 function animateLoadingIcon() {
   var loadingIcon = document.getElementById("loadingIcon");
   loadingIconTimer = setInterval(() => rotateIcon(loadingIcon), 300);
-  setTimeout(() => {}, 5000);
+  setTimeout(() => {
+    hideLoadingScreen();
+  }, 3000);
 }
 
 var degrees = 0;
