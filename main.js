@@ -287,7 +287,7 @@ function preloadImage(url) {
 
 function preloadImages() {
   cachedImages = new Array(images.length);
-  images.forEach((image) => {
+  images.forEach(async (image) => {
     image.sources.forEach((src) => {
       preloadImage(src);
     });
