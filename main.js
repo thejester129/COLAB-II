@@ -224,7 +224,9 @@ function startup() {
   configurePopups();
   addMarkers();
   addKeyListeners();
-  preloadImages();
+  // Takes too long because of large file sizes
+  // Can improve by using smaller thumbnails for hover images in future
+  //preloadImages();
 }
 
 // Helpers
