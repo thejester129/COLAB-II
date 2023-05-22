@@ -11,4 +11,4 @@ LeafletJS (OpenStreetMap)
 Pure JS/HTML/CSS
 
 Available at : 
-https://thejester129.github.io/COLAB_II/
+[https://thejester129.github.io/COLAB_II/](https://thejester129.github.io/COLAB-II/)
